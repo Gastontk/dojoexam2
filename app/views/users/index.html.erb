@@ -2,16 +2,17 @@
 <p>Find me in app/views/users/index.html.erb</p>
 
 <% @users.each do |u| %>
-	<div style ='background-color:linen;border:solid grey 4px;width:200px;padding:5px;'>
-	<%=u.first_name%> <br>
-	<%=u.last_name%> <br>
-	<%=u.city%> <br>
-	<%=u.state%> <br>
-	<%=u.email%> <br> <br>
-	<%= link_to "Delete User", { action: :destroy, id: u.id }, method: :delete %> | 
-	<%= link_to "Edit User", edit_user_path(u) %> <br>
-	</div>
-	<br>
+		<div style ='background-color:linen;border:solid grey 4px;width:200px;padding:5px;'>
+		<%=u.first_name%> <br>
+		<%=u.last_name%> <br>
+		<%=u.city%> <br>
+		<%=u.state%> <br>
+		<%=u.email%> <br> <br>
+		<%= link_to "Delete User", { action: :destroy, id: u.id }, method: :delete unless u==current_user %> | 
+		<%= link_to "Edit User", edit_user_path(u) %> <br>
+		</div>
+		<br>
+
 
 <% end %>
 
