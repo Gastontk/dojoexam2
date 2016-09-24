@@ -1,0 +1,2 @@
+module SecuremeHelper
+end

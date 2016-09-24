@@ -1,0 +1,179 @@
+
+<body style='background-color:lightgrey;'>
+      
+
+<br>
+<br>
+
+<% brdr_color ='border:solid black;background-color:linen;float:left;display:block;padding:10px;' %>
+<% if @user.errors.any? %>
+      <% brdr_color = 'border:solid red;background-color:pink;float:left;margin-left:20px;padding:15px;height:600px;display:block' %>
+      <div style='<%==brdr_color%>;'>
+      <% count = 1 %>
+      <h1>Please fix the errors below to create a new user.</h1>
+      <% @user.errors.full_messages.each do |t| %>
+         <h3>   <%= count %>:  <%=t %>. </h3>
+          <% count+=1 %>
+      <% end %>
+<%else %>
+      <!-- <h1>No @user info passed to form</h1> -->
+<% end %>
+</div>
+
+<div  style='<%=brdr_color%>margin-bottom:200px;'>
+<h1>Signup!</h1>
+<% us_states = [
+      ['Choose State', ""],
+      ['Alabama', 'AL'],
+      ['Alaska', 'AK'],
+      ['Arizona', 'AZ'],
+      ['Arkansas', 'AR'],
+      ['California', 'CA'],
+      ['Colorado', 'CO'],
+      ['Connecticut', 'CT'],
+      ['Delaware', 'DE'],
+      ['District of Columbia', 'DC'],
+      ['Florida', 'FL'],
+      ['Georgia', 'GA'],
+      ['Hawaii', 'HI'],
+      ['Idaho', 'ID'],
+      ['Illinois', 'IL'],
+      ['Indiana', 'IN'],
+      ['Iowa', 'IA'],
+      ['Kansas', 'KS'],
+      ['Kentucky', 'KY'],
+      ['Louisiana', 'LA'],
+      ['Maine', 'ME'],
+      ['Maryland', 'MD'],
+      ['Massachusetts', 'MA'],
+      ['Michigan', 'MI'],
+      ['Minnesota', 'MN'],
+      ['Mississippi', 'MS'],
+      ['Missouri', 'MO'],
+      ['Montana', 'MT'],
+      ['Nebraska', 'NE'],
+      ['Nevada', 'NV'],
+      ['New Hampshire', 'NH'],
+      ['New Jersey', 'NJ'],
+      ['New Mexico', 'NM'],
+      ['New York', 'NY'],
+      ['North Carolina', 'NC'],
+      ['North Dakota', 'ND'],
+      ['Ohio', 'OH'],
+      ['Oklahoma', 'OK'],
+      ['Oregon', 'OR'],
+      ['Pennsylvania', 'PA'],
+      ['Puerto Rico', 'PR'],
+      ['Rhode Island', 'RI'],
+      ['South Carolina', 'SC'],
+      ['South Dakota', 'SD'],
+      ['Tennessee', 'TN'],
+      ['Texas', 'TX'],
+      ['Utah', 'UT'],
+      ['Vermont', 'VT'],
+      ['Virginia', 'VA'],
+      ['Washington', 'WA'],
+      ['West Virginia', 'WV'],
+      ['Wisconsin', 'WI'],
+      ['Wyoming', 'WY']
+    ] %>
+
+
+
+<%= form_for @user, url:'/users' do |f| %>
+
+      <% if @user.errors.include?(:first_name) %>    
+            <!-- <h1>Error in first_name</h1> -->
+             <div style='color:red;'> First Name: <%= f.text_field :first_name %> </div><br>
+      <% else %>	
+            First Name: <%= f.text_field :first_name %> <br>
+      <% end %> 
+
+
+<!--  -->
+      <% if @user.errors.include?(:last_name) %>
+            <div style='color:red;'> Last Name: <%= f.text_field :last_name %> </div><br>
+      <% else %>  
+            Last Name: <%= f.text_field :last_name %> <br>
+      <% end %> 
+
+
+
+      <% if @user.errors.include?(:email) %>
+            <div style='color:red;'> Email: <%= f.email_field :email, :html => { :style => 'border:dashed;' } %> </div><br>
+      <% else %>  
+           Email Address: <%= f.email_field :email %> <br>
+      <% end %>  
+
+
+      <% if @user.errors.include?(:city) %>
+            <div style='color:red;'> City: <%= f.text_field :city %> </div><br>
+      <% else %>  
+           City: <%= f.text_field :city %> <br>
+      <% end %> 
+
+
+
+
+       <% if @user.errors.include?(:state) %>
+            <div style='color:red;'> State: <%= f.select :state, options_for_select(us_states) %> </div><br>
+      <% else %> 
+           State:    <%= f.select :state, options_for_select(us_states) %> <br>
+      <% end %> 
+
+
+
+      <% if @user.errors.include?(:password) %>
+            <div style='color:red;'> Password: <%= f.password_field :password %> </div><br>
+      <% else %>  
+            Password:         <%= f.password_field :password %> <br>
+      <% end %> 
+
+
+
+      <% if @user.errors.include?(:password_confirmation) %>
+            <div style='color:red;'> Verify Password: <%= f.password_field :password_confirmation %> </div><br>
+
+
+
+      <% else %>  
+            Verify Password: <%= f.password_field :password_confirmation %> <br>
+
+
+      <% end %> 
+
+
+
+
+
+
+
+
+
+
+      
+
+
+	<%= f.submit %>
+
+<% end %>
+</div>
+
+
+</body>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

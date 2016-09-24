@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>LoginRegistration</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body style='background-color:lightgrey;'>
+	<a href="http://codingdojo.com"> <h1>Coding Dojo Rails Exam</h1></a>
+
+	<% if current_user %>
+		Signed in as: <bold><%= current_user.first_name.capitalize %></bold> | <%= link_to "Logout", '/logout' %>
+	<% else %>
+		<%= link_to 'Login', '/login' %> | <%= link_to 'Signup', '/signup' %>
+	<% end %>
+
+<%= yield %>
+
+<%= render 'layouts/navigation' %>
+
+</body>
+</html>

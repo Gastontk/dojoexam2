@@ -1,0 +1,7 @@
+
+<% if @route_err %>
+	<h2 style='color:red;'><%=request.base_url%>/<%= @route_err %> doesn't exist on this site. Are you trying to mess with me? Perhaps you meant to <%= link_to 'Login', '/login' %>? </h2>
+<% else %>
+	The @route_err is not being set in users#route_error
+<% end %>
+<img src='https://d13yacurqjgara.cloudfront.net/users/14248/screenshots/1240413/404-dribb.gif' alt='binoculars'/>"
