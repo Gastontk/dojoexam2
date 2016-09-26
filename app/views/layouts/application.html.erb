@@ -10,14 +10,17 @@
 	<a href="http://codingdojo.com"> <h1>Coding Dojo Rails Exam</h1></a>
 
 	<% if current_user %>
-		Signed in as: <bold><%= current_user.first_name.capitalize %></bold> | <%= link_to "Logout", '/logout' %>
+		Hello!: <bold><%= current_user.first_name.capitalize  %> <%=  current_user.last_name.capitalize %></bold> | <%= link_to "Logout", '/logout' %>
 	<% else %>
 		<%= link_to 'Login', '/login' %> | <%= link_to 'Signup', '/signup' %>
 	<% end %>
 
 <%= yield %>
-
-<%= render 'layouts/navigation' %>
+<!-- 
+<%= render 'layouts/navigation' %> -->
 
 </body>
 </html>
+
+
+<!--  -->

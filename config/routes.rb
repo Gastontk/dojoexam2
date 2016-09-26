@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
   resources :users
+  resources :songs
+
+  # sessions routes
   get 'sessions/new'
 
   get 'sessions/create'
@@ -18,10 +21,20 @@ Rails.application.routes.draw do
 
   get 'users/update'
 
+  # songs routes
+  get 'songs/index'
+
+  post '/new_song' => 'songs#create'
+
+  get '/songs_index' => 'songs#index'
+
+
+
 
 
   get 'secureme/Default_Action'
-  root 'secureme#Default_Action'
+  # root 'secureme#Default_Action'
+  root 'songs#index'
 
   # Routes for creating session using Sessions Controller
   get '/login' => 'sessions#new'
